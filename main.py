@@ -9,6 +9,7 @@ from graphic_arts.start_game_banner import run_screensaver
 
 
 def attack(char_name: str, char_class: str) -> str:
+    """Выводит информацию о нанесенном уроне."""
     if char_class == 'warrior':
         return (
             f'{char_name} нанёс урон противнику равный {5 + randint(3, 5)}'
@@ -25,6 +26,7 @@ def attack(char_name: str, char_class: str) -> str:
 
 
 def defence(char_name: str, char_class: str) -> str:
+    """Выводит информацию о блокированном уроне."""
     if char_class == 'warrior':
         return (f'{char_name} блокировал {10 + randint(5, 10)} урона')
     if char_class == 'mage':
@@ -35,6 +37,7 @@ def defence(char_name: str, char_class: str) -> str:
 
 
 def special(char_name: str, char_class: str) -> str:
+    """Выводит информацию о нанесенном спецатакой уроне."""
     if char_class == 'warrior':
         return (
             f'{char_name} применил специальное умение '
@@ -48,6 +51,10 @@ def special(char_name: str, char_class: str) -> str:
 
 
 def start_training(char_name: str, char_class: str) -> str:
+    """Осуществляет тренировку.
+    Запрашивает команды игрока, и запускает действия
+    согласно получаемым командам.
+    """
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — отличный боец ближнего боя.')
     if char_class == 'mage':
@@ -74,12 +81,13 @@ def start_training(char_name: str, char_class: str) -> str:
 
 
 def choice_char_class() -> str:
+    """Функция выбора класса игрока."""
     approve_choice: str = ''
     char_class: str = ''
     while approve_choice != 'y':
         char_class = input(
             'Введи название персонажа, за которого хочешь '
-            'играть: Воитель — warrior, Маг — mage, Лекарь — healer: '
+            'играть: Воитель — warrior, Маг — mage, Лекарь — healer: ',
         )
         if char_class == 'warrior':
             print(
@@ -98,7 +106,7 @@ def choice_char_class() -> str:
             )
         approve_choice = input(
             'Нажми (Y), чтобы подтвердить выбор, или любую другую '
-            'кнопку, чтобы выбрать другого персонажа '
+            'кнопку, чтобы выбрать другого персонажа ',
         ).lower()
     return char_class
 
